@@ -1,0 +1,38 @@
+.Header {
+    margin: 24px 24px;
+
+    &--1 {
+        font-size: 24px;
+        line-height: 48px;
+        font-weight: 700;
+
+        @media only screen and (min-width: 1001px) {
+            font-size: 36px;
+            line-height: 48px;
+        }
+    }
+
+    &--2 {
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 700;
+
+        @media only screen and (min-width: 1001px) {
+            font-size: 30px;
+            line-height: 48px;
+        }
+    }
+
+    &--3 {
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 700;
+        color: $header-color-1;
+    }
+
+    &--4 {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 700;
+    }
+}

@@ -1,0 +1,129 @@
+html, body, .body-content {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    background-image: none;
+    background-color: $background;
+    color: $text-color;
+
+    @include media-phone-only {
+        min-width: $min-container-width;
+    }
+}
+
+.body-content {
+    width: 100%;
+    zoom: 1;
+}
+
+.site-header {
+    position: fixed;
+    top: 0; right: 0; left: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
+
+    .container {
+        position: relative;
+        height: $menu-height;
+        background-color: $header-background;
+        border-bottom: 1px solid rgba(0, 0, 0, .25);
+
+        &-wrapper {
+            position: relative;
+            height: $menu-height;
+            margin: 0 auto;
+            padding-left: 40px;
+            padding-right: 7px;
+            @include clearfix;
+            box-sizing: border-box;
+    
+            @media (min-width: $max-container-width) {
+                max-width: $max-container-width;
+                padding-right: 0;
+            }
+        }
+
+        .logo {
+            position: absolute;
+            opacity: 0;
+            width: 32px; height: 32px;
+            left: 8px; 
+            margin: 10px 0 0 0;
+            background-image: url("~logo.svg");
+            background-size: 32px 32px;
+
+            @include media-desktop-up {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__tools {
+        height: $menu-height;
+    }
+
+    @include media-phone-only {
+        min-width: $min-container-width;
+    }
+}
+
+.to-right {
+    float: right;
+    text-align: left;
+}
+
+.menu--opened {
+    @media (max-width: #{$bp-desktop-up - 1}) {
+        .site-header .container .logo  {
+            opacity: 1;
+            z-index: 1010;
+            margin-left: 265px;
+            transition: opacity 300ms 200ms ease;
+        }
+    }
+
+    @include media-phone-only {
+        .site-header .container .logo {
+            position: fixed;
+            margin-left: 0;
+            margin-top: 8px;
+            transition: none;
+        }
+    }
+}
+
+.page {
+    position: relative;
+    margin: 0 auto;
+    padding: #{$menu-height + 10px} 7px 15px;
+
+    @media (min-width: $max-container-width) {
+        max-width: $max-container-width;
+    }
+
+    @include media-phone-only {
+        min-width: $min-container-width;
+    }
+}
+
+.main-page {
+    display: block;
+    @include clearfix;
+
+    @include media-desktop-up {
+        padding-left: 8px;
+    }
+}
+
+.content {
+    position: relative;
+    display: block;
+
+    @media (min-width: $max-container-width) {
+        display: inline-block;
+        float: left;
+    }
+}

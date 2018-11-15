@@ -1,0 +1,6 @@
+.Icon {
+    display: inline-block;
+    vertical-align: middle;
+    color: $icon-color;
+    @extend %transition;
+}

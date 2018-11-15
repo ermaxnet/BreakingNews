@@ -1,0 +1,244 @@
+%active-link {
+    color: $menu-color-1;
+}
+
+.navigation {
+    float: left;
+
+    &-button {
+        position: absolute;
+        width: 32px; height: 32px;
+        margin: 7px 0 0 -32px;
+        @extend %normalize;
+        padding: 0;
+        transition: opacity 600ms ease, margin 300ms ease, right 300ms ease;
+        cursor: pointer;
+        z-index: 1005;
+
+        &__icon, &__icon::before, &__icon::after {
+            position: absolute;
+            width: 100%; height: 2px;
+            border-radius: 4px;
+            background-color: $menu-border;
+            left: 0;
+            margin-top: -1px;
+            transition: 
+                background 300ms 0s ease, 
+                transform 300ms 0s ease, 
+                top 300ms 200ms ease, 
+                bottom 300ms 200ms ease;
+        }
+
+        &__icon::before, &__icon::after {
+            content: "";
+        }
+
+        &__icon::before {
+            top: -8px;
+        }
+
+        &__icon::after {
+            bottom: -9px;
+        }
+    }
+
+    &-list {
+        display: none;
+        height: $menu-height;
+        text-align: left;
+        list-style: none;
+        padding: 0; margin: 0;
+        @include clearfix;
+
+        & > &__item {
+            position: relative;
+            float: left;
+            display: list-item;
+            height: $menu-height;
+            color: $menu-color;
+            overflow: hidden;
+
+            .navigation-link {
+                position: relative;
+                display: block;
+                height: $menu-height;
+                color: inherit;
+                text-decoration: none;
+                padding: 0 15px 0 15px;
+                font-size: 14px;
+                font-weight: bold;
+                border-bottom: 2px solid transparent;
+                @include clearfix;
+                transition: all 150ms $transition-ease;
+                font-family: $btn-font;
+                text-align: center;
+
+                &.active {
+                    @extend %active-link;
+                }
+
+                &.home {
+                    padding-right: 38px;
+
+                    &:after {
+                        position: absolute;
+                        width: 2px;
+                        height: calc(#{$menu-height - 15px});
+                        background-color: transparentize($color: $menu-color, $amount: .6);
+                        top: 7.5px; right: 11px;
+                    }
+                }
+
+                &:hover {
+                    @extend %active-link;
+                }
+
+                .icon {
+                    float: left;
+                    width: 23px; height: 23px;
+                    font-size: 21px;
+                    font-style: normal;
+                    line-height: 1;
+                    margin: 11px 0 0 10px;
+                }
+
+                .text {
+                    float: left;
+                    margin: 17px 0 0 0;
+                    line-height: 1;
+                }
+            }
+        }
+    }
+
+    @include media-desktop-up {
+        .navigation-button {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .navigation-list {
+            display: block;
+        }
+    }
+
+    @media (max-width: #{$bp-desktop-up - 1}) {
+        .navigation-list {
+            position: fixed;
+            display: block;
+            width: $menu-m-width; height: 100%;
+            top: 0; left: 0;
+            background-color: $menu-color-1;
+            padding-top: #{$menu-height + 10px};
+            z-index: 1001;
+            transform: translateX(-100%);
+
+            & > .navigation-list__item {
+                display: block;
+                width: 100%;
+                float: none;
+
+                .navigation-link {
+                    font-size: 18px;
+                    color: $menu-color-2;
+                    border: none;
+                    text-align: left;
+                    padding-left: 7px;
+
+                    &::after {
+                        display: none!important;
+                    }
+
+                    .text {
+                        margin: 0;
+                        float: none;
+                        line-height: $menu-height;
+                    }
+
+                    &:hover {
+                        color: $menu-color-3;
+                    }
+
+                    &.active {
+                        color: $menu-color-3;
+                    }
+                }
+            }
+        }
+
+        &.menu--opened {
+            &::before {
+                position: fixed;
+                content: "";
+                width: 100%; height: 100%;
+                top: 0; left: 0;
+                background-color: $menu-overlay;
+                z-index: 1000;
+            }
+
+            .navigation-list {
+                transform: translateX(0);
+                transition: transform 300ms ease;
+            }
+
+            .navigation-button {
+                margin-left: 277px;
+
+                &::before {
+                    position: absolute;
+                    content: "";
+                    width: #{$menu-height * 2}; height: $menu-height;
+                    background-color: white;
+                    top: 0; left: 0;
+                    margin: -7px 0 0 #{-1 * $menu-height - 7px};
+                    border-bottom-left-radius: 4px;
+                }
+
+                .navigation-button__icon {
+                    background-color: transparent!important;
+
+                    &, &::before, &::after {
+                        transition: 
+                            background 300ms 0s ease, 
+                            transform 300ms 200ms ease, 
+                            top 300ms 0s ease, 
+                            bottom 300ms 0s ease;
+                    }
+
+                    &::before {
+                        top: 0;
+                        transform: rotate(45deg);
+                    }
+
+                    &::after {
+                        bottom: 0;
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+        }
+    }
+
+    @include media-phone-only {
+        .navigation-list {
+            width: 100%;
+        }
+
+        &.menu--opened {
+            .navigation-list {
+                transition: none;
+            }
+
+            .navigation-button {
+                margin-left: 0;
+                right: 7px;
+
+                &::before {
+                    width: $menu-height;
+                    margin-left: -7px;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}

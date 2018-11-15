@@ -1,0 +1,28 @@
+﻿{
+  "MenuItems": [
+    {
+      "Name": "Главная",
+      "ControllerName": "Home",
+      "IconCssClass": "fa-home",
+      "IsHome": true
+    },
+    {
+      "Name": "Новости",
+      "ControllerName": "News",
+      "IconCssClass": "fa-newspaper"
+    },
+    {
+      "Name": "Уведомления",
+      "ControllerName": "Notice",
+      "IconCssClass": "fa-bell"
+    },
+    {
+      "Name": "Альбомы",
+      "ControllerName": "Media",
+      "IconCssClass": "fa-images",
+      "Parameters": {
+        "video": "false"
+      }
+    }
+  ]
+}

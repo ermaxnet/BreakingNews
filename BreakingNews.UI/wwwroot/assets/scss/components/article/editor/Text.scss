@@ -1,0 +1,44 @@
+@import "../../../theme";
+@import "../../../extends";
+
+@import "~draft-js/dist/Draft.css";
+
+.Text {
+    position: relative;
+    width: 100%;
+    padding: 9px;
+    background-color: $txt-input-background;
+    border-radius: 4px;
+    @extend %box-sizing;
+
+    &__editor {
+        cursor: text;
+        position: relative;
+        width: 100%; height: auto;
+        background-color: transparent;
+        outline: none!important;
+        @extend %box-sizing;
+        font: normal 400 14px/16px "Open Sans", Arial, Helvetica, Verdana, sans-serif;
+    }
+}
+
+.Block {
+    margin: 0 24px;
+}
+
+@import "Paragraph";
+@import "Link";
+@import "Blockquote";
+@import "List";
+@import "Menu";
+@import "Media";
+@import "Headers";
+
+.Editor > .Text {
+    max-width: 580px;
+    margin: 0 auto;
+
+    @media only screen and (min-width: 1001px) {
+        max-width: 820px;
+    }
+}

@@ -1,0 +1,441 @@
+@import "../theme";
+@import "../extends";
+@import "~bourbon/core/bourbon";
+
+@keyframes CounterPulse {
+    0% {
+        stroke-width: 2;
+    }
+    50% {
+        stroke-width: 4;
+    }
+    100% {
+        stroke-width: 2;
+    }
+}
+
+.CommentBox {
+    padding: 7px 10px;
+    background-color: $comment-bg-color;
+}
+
+.Comment {
+    position: relative;
+
+    &__UserAvatar {
+        position: absolute;
+        margin: 0;
+        left: 16px; top: 2px;
+    }
+
+    &__Form {
+        margin-left: 56px;
+
+        .Comment__Content {
+            .Pad {
+                border-color: $comment-pad-border-color;
+                padding: 8px 31px 8px 8px;
+                border-radius: 8px;
+            }
+
+            .container {
+                position: relative;
+                height: auto;
+            }
+        }
+
+        &--focused, &--filled {
+            .Comment__Content {
+                .Pad {
+                    min-height: 80px;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                    border-color: $comment-pad-border-color-1;
+
+                    .public-DraftEditorPlaceholder-root {
+                        color: $comment-editor-color-1;
+                    }
+                }
+
+                &--addon {
+                    .Pad {
+                        border-bottom: none;
+                        @include border-bottom-radius(0);
+                    }
+
+                    .Comment__Addon {
+                        @include border-bottom-radius(8px);
+                        border: 1px solid $comment-addon-border-color-1;
+                        border-top-width: 0;
+                    }
+                }
+            }
+        }
+
+        &--focused {
+            .Comment__Content {
+                box-shadow: 0 0 0 1px $comment-addon-shadow;
+                border-radius: 8px;
+            }
+        }
+    }
+
+    &__Toolbar {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+
+        &__Addons {
+            flex-shrink: 0;
+        }
+
+        &__Button {
+            margin-left: auto;
+        }
+    }
+
+    .CharactersCounter {
+        position: absolute;
+        display: block;
+        margin: 0 8px 4px 4px;
+        bottom: 0; right: 0;
+
+        &__radial {
+            margin-bottom: -4px;
+            overflow: visible;
+            transform: rotate(-90deg);
+        }
+
+        &__progressOverlay {
+            stroke: $cc-overlay-color;
+        }
+
+        &__progress {
+            &--safe {
+                stroke: $cc-safe-color;
+            }
+
+            &--warn {
+                stroke: $cc-warn-color;
+            }
+
+            &--danger {
+                stroke: $cc-danger-color;
+            }
+
+            &--pulse {
+                animation: CounterPulse 300ms ease-in-out;
+                animation-iteration-count: 1;
+            }
+        }
+
+        .countdown {
+            position: absolute;
+            display: block;
+            width: 20px; height: 20px;
+            font-size: 14px;
+            text-align: center;
+            line-height: 20px;
+            top: -17px; left: 0;
+            color: $cc-warn-color;
+
+            &--danger {
+                color: $cc-danger-color;
+            }
+        }
+    }
+}
+
+.Addon {
+    position: relative;
+    display: inline-block;
+
+    & + .Addon {
+        margin-left: 5px;
+    }
+
+    .Icon {
+        width: auto; height: auto;
+        font-size: 24px;
+        line-height: 24px;
+        vertical-align: middle;
+    }
+}
+
+.photos-addon, .quiz-addon {
+    position: relative;
+
+    &__button {
+        display: inline-block;
+        @extend %normalize;
+        padding: 4px 10px;
+        cursor: pointer;
+        line-height: normal;
+        color: $comment-addon-color-1;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        transition: all 150ms ease-in-out;
+    }
+
+    &:hover {
+        .quiz-addon__button, .photos-addon__button {
+            border-color: $comment-addon-border-color;
+        }
+    }
+
+    &--disabled {
+        .quiz-addon__button, .photos-addon__button {
+            cursor: default;
+            box-shadow: none!important;
+            border-color: transparent!important;
+            color: $comment-addon-color-2;
+        }
+    }
+
+    &--enabled {
+        .quiz-addon__button {
+            box-shadow: none!important;
+            border-color: $comment-addon-border-color!important;
+            background-color: $comment-addon-bg-color-2;
+        }
+    }
+}
+
+.photos-addon {
+    &__hidden {
+        position: absolute;
+        width: 100%; height: 100%;
+        top: 0; left: 0;
+        z-index: 10;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    &__input {
+        position: absolute;
+        width: 100%; height: 100%;
+        top: 0; left: 0;
+        z-index: 10;
+        opacity: 0;
+        padding-top: 100px;
+        cursor: pointer;
+    }
+
+    &--disabled {
+        .photos-addon__input {
+            cursor: default;
+        }
+    }
+}
+
+.photos-thumbnails {
+    max-width: 100%;
+    display: block;
+    background-color: $comment-addon-bg-color;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 $comment-addon-bg-shadow;
+    @include border-bottom-radius(inherit);
+
+    &__list {
+        padding: 8px 16px;
+
+        .container {
+            display: flex;
+        }
+    }
+}
+
+.thumbnail {
+    position: relative;
+    display: inline-block;
+    width: $comment-addon-thumbnail-width;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, .05), 0 1px 0 rgba(255, 255, 255, .5);
+    margin-right: 8px;
+    outline: none!important;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &-container {
+        width: $comment-addon-thumbnail-width;
+        height: $comment-addon-thumbnail-height;
+        overflow: hidden;
+    }
+
+    &-remove {
+        position: absolute;
+        height: 19px; width: 19px;
+        color: $comment-addon-color-3;
+        background-color: $comment-addon-bg-color-1;
+        border-radius: 10px;
+        top: 4px; right: 4px;
+        text-align: center;
+        line-height: 17px;
+        cursor: pointer;
+
+        .Icon {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 12px;
+            line-height: normal;
+        }
+    }
+}
+
+.quiz-composer {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    @include border-bottom-radius(inherit);
+
+    .container {
+        position: relative;
+        display: block;
+        background-color: $comment-addon-bg-color;
+        box-sizing: border-box;
+        overflow: hidden;
+        box-shadow: inset 0 1px 0 $comment-addon-bg-shadow;
+        @include border-bottom-radius(inherit);
+        padding: 10px 0;
+    }
+
+    .quiz-option {
+        display: block;
+        padding: 2px 0 3px 0;
+        @include clearfix;
+
+        &--last {
+            margin-bottom: 10px;
+        }
+
+        &__radio {
+            width: 15px; height: 15px;
+            float: left;
+            margin: 7.5px 10px auto;
+            vertical-align: middle;
+
+            &::before {
+                content: "";
+                display: block;
+                width: 15px; height: 15px;
+                background-color: transparent;
+                border: 2px solid $input-radio-border-color;
+                border-radius: 50%;
+                box-sizing: border-box;
+            }
+        }
+
+        &__input {
+            vertical-align: middle;
+            width: $comment-addon-quiz-width; height: 30px;
+            float: left;
+            overflow: hidden;
+            box-sizing: border-box;
+            padding: 4px;
+            background-color: $comment-addon-quiz-bg-color;
+            border: 1px solid $comment-addon-quiz-border-color;
+            border-radius: 3px;
+            font-size: 14px;
+            line-height: 22px;
+            outline: none!important;
+
+            &::placeholder {
+                color: $comment-addon-quiz-color-1;
+            }
+
+            &:focus {
+                border-color: $comment-addon-quiz-border-color-1;
+                box-shadow: 0 0 0 1px $comment-addon-quiz-shadow;
+            }
+        }
+
+        &__remove {
+            @extend %normalize;
+            height: 20px;
+            margin: 5px 5px; padding: 0 7px;
+            color: $comment-addon-quiz-color;
+            font-size: 18px;
+            line-height: 20px;
+            cursor: pointer;
+        }
+    }
+
+    .quiz-button {
+        @extend %normalize;
+        display: block;
+        height: 20px;
+        margin: 10px 0 15px 36px;
+        padding: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: $comment-addon-color;
+        cursor: pointer;
+
+        &--remove {
+            position: absolute;
+            top: 12px; right: 12px;
+            margin: 0;
+        }
+
+        &--term {
+            display: inline-block;
+            height: auto; width: auto;
+            margin: 0;
+            line-height: normal;
+            padding-left: 4px;
+            vertical-align: middle;
+        }
+    }
+
+    .quiz-term {
+        position: relative;
+        height: 28px;
+        padding: 14px 0 6px 36px;
+        border-top: 1px solid $comment-addon-border-color-2;
+        color: $comment-addon-quiz-color-1;
+
+        .label {
+            display: inline-block;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        .quiz-days {
+            height: 28px;
+            display: inline-block;
+            margin-left: 4px;
+            border-color: $comment-addon-quiz-border-color-1;
+            outline: none!important;
+            vertical-align: middle;
+
+            & + .label {
+                margin-left: 4px;
+                color: $comment-addon-color;
+            }
+        }
+    }
+}
+
+.content-30 {
+    .thumbnail {
+        width: $comment-addon-thumbnail-width-sm;
+
+        &-container {
+            width: $comment-addon-thumbnail-width-sm;
+            height: $comment-addon-thumbnail-height-sm;
+        }
+    }
+
+    .quiz-composer {
+        .quiz-option {
+            &__input {
+                width: $comment-addon-quiz-width-sm;
+            }
+        }
+    }
+}

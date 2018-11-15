@@ -1,0 +1,64 @@
+@import "~bourbon/core/bourbon";
+
+.Menu {
+    position: absolute;
+    width: 100%; height: auto;
+    margin: 0 auto; padding: 0 9px;
+    top: 0; left: 0;
+    box-sizing: border-box;
+    background-color: white;
+    transition: top $transition-duration $transition-ease;
+    z-index: 10000;
+    @include border-top-radius(4px);
+
+    &_MenuList {
+        position: relative;
+        padding: 15px 200px 14px 0;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%; height: auto;
+            border: 0 solid $menu-border;
+            border-bottom-width: 1px;
+            left: 0; right: 0; bottom: 0;
+        }
+
+        .MenuButton {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 2px 0; margin-right: 16px;
+            cursor: pointer;
+            color: $menu-color;
+            font-size: 14px;
+            line-height: 24px;
+            @extend %transition;
+
+            & > .Icon {
+                margin-top: -2px;
+            }
+
+            &--active {
+                color: $menu-color-1;
+
+                & > .Icon {
+                    color: $menu-color-1;
+                }
+            }
+
+            &__Images {
+                position: absolute;
+                right: 0; margin-right: 0;
+            }
+        }
+    }
+
+    &--fixed {
+        box-shadow: 0 1px 1px 0 $menu-border;
+        @include border-top-radius(0);
+
+        .Menu_MenuList::after {
+            display: none;
+        }
+    }
+}

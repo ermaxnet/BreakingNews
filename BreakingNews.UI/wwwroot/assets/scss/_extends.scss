@@ -1,0 +1,53 @@
+@import "theme";
+
+%box-sizing {
+    box-sizing: border-box;
+}
+
+%normalize {
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    outline: none!important;
+}
+
+%vertical-align-middle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+%transition {
+    transition: all $transition-duration $transition-ease;
+}
+
+%text-overflow {
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+%action-button {
+    position: relative;
+    display: inline-block;
+    padding: 0 2px;
+    font-size: 16px;
+    line-height: 1;
+    color: inherit;
+    cursor: pointer;
+    vertical-align: middle;
+
+    @extend %normalize;
+}
+
+%action-count {
+    position: relative;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    margin-left: 6px;
+    vertical-align: text-bottom;
+    color: inherit;
+}

@@ -1,0 +1,51 @@
+{
+    "ru": {
+        "translation": {
+            "search_on_site": "Поиск по сайту",
+            "buttons": {
+                "button_add": "Добавить",
+                "button_images": "Добавить изображения",
+                "button_link_undo": "Удалить",
+                "button_link_edit": "Изменить",
+                "button_notice": "Написать"
+            },
+            "text": {
+                "elements_number": "Элементов:",
+                "placeholder": "Введите"
+            },
+            "simple_text": {
+                "placeholder": "Ваш текст здесь"
+            },
+            "toolbar": {
+                "bold": "Жирный",
+                "italic": "Курсив",
+                "underline": "Подчеркнутый",
+                "highlight": "Выделенный",
+                "add_link": "Добавить ссылку",
+                "H2": "Заголовок",
+                "H4": "Подзаголовок",
+                "blockquote": "Цитата",
+                "UL": "Ненумерованный список",
+                "OL": "Нумерованный список"
+            },
+            "link_input_placeholder": "Нажмите Enter или ESC",
+            "image_caption_placeholder": "Добавьте описание к изображению",
+            "slider": {
+                "settings_window": "Настройка слайдера изображений"
+            },
+            "numbers": {
+                "thousand": "тыс."
+            },
+            
+            "New notification": "Новое уведомление",
+            "Variant": "Вариант",
+            "Add variant": "Добавить вариант",
+            "optional": "необязательно",
+            "Remove quiz": "Удалить опрос",
+            "Quiz duration": "Продолжительность опроса",
+            "day_0": "день",
+            "day_1": "дня",
+            "day_2": "дней"
+        }
+    }
+}

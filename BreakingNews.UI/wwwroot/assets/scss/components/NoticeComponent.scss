@@ -1,0 +1,35 @@
+@import "../theme";
+@import "../mixins";
+
+.NoticeComponent {
+    display: none;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+
+    &__container {
+        margin: 7px 15px 0 0;
+    }
+
+    &__button {
+        position: relative;
+        border: none;
+        font-size: 14px; font-weight: bold;
+        text-align: center;
+        white-space: nowrap;
+        padding: 6px 16px;
+        line-height: 20px;
+        border-radius: 100px;
+        background-color: transparentize($color: $btn-background, $amount: .2);
+        color: $btn-color;
+        transition: all $transition-duration $transition-ease;
+
+        &:hover {
+            background-color: $btn-background;
+        }
+    }
+
+    @include media-tablet-landscape-up {
+        display: inline-block;
+    }
+}

@@ -1,0 +1,29 @@
+.Blockquote {
+    position: relative;
+    display: block;
+    margin: 24px 0 0; padding: 12px 70px;
+
+    font-size: 24px;
+    line-height: 48px;
+    color: $cite-color;
+
+    background-color: $cite-background;
+
+    & + .Blockquote {
+        margin-top: 0;
+    }
+
+    &.BlockquoteCaption {
+        padding-left: 100px;
+
+        &::before {
+            content: "\2014";
+            position: absolute;
+            left: 70px;
+        }
+    }
+
+    & + .BlockquoteCaption {
+        margin-bottom: 24px;
+    }
+}

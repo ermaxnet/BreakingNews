@@ -1,0 +1,76 @@
+.account {
+    display: none;
+    height: $menu-height;
+    vertical-align: middle;
+
+    &__image {
+        width: 32px; height: 32px;
+        margin: #{($menu-height - 32px) / 2} 7px 0 0;
+        background-color: #AAA;
+        border-radius: 50%;
+    }
+
+    &__name {
+        display: block;
+        height: $menu-height;
+        font-size: 14px;
+        line-height: 1;
+        color: $text-color;
+        padding-top: 16px;
+        box-sizing: border-box;
+        @include clearfix;
+
+        &-accent, &-other {
+            float: left;
+            line-height: 1;
+        }
+
+        &-accent {
+            font-weight: bold;
+            color: $account-accent-color;
+        }
+    }
+
+    @include media-tablet-landscape-up {
+        display: inline-flex;
+    }
+
+    @media (max-width: #{$bp-tablet-landscape-up - 1}) {
+        position: fixed;
+        display: inline-flex; 
+        width: $menu-m-width; height: #{$menu-height + 30px};
+        z-index: 1010;
+        left: 0; bottom: 0;
+        padding: 15px 7px;
+        box-sizing: border-box;
+        background-color: darken($color: $menu-color-1, $amount: 10%);
+        transform: translateX(-100%);
+    }
+
+    @include media-phone-only {
+        width: 100%;
+    }
+}
+
+.menu--opened {
+    @media (max-width: #{$bp-tablet-landscape-up - 1}) {
+        .account {
+            transform: translateX(0);
+            transition: transform 300ms ease;
+
+            .account__name {
+                color: $menu-color-2;
+
+                .account__name-accent {
+                    color: $menu-color-3;
+                }
+            }
+        }
+    }
+
+    @include media-phone-only {
+        .account {
+            transition: none;
+        }
+    }
+}

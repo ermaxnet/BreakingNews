@@ -1,0 +1,45 @@
+@import "~draft-js/dist/Draft.css";
+@import "../theme";
+
+.Pad {
+    position: relative;
+    max-width: 100%;
+    background-color: $pad-bg-color;
+    font: normal 14px/20px $font-family;
+    border: 1px solid $pad-border-color;
+
+    .public-DraftEditorPlaceholder-root {
+        color: $pad-color-1;
+
+        &.public-DraftEditorPlaceholder-hasFocus {
+            color: $pad-color-2;
+        }
+    }
+
+    .DraftEditor-editorContainer {
+        width: auto;
+        vertical-align: top;
+    }
+
+    .block {
+        position: relative;
+        display: block;
+        margin: 0; padding: 0;
+    }
+
+    .text {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    
+    .link {
+        text-decoration: none;
+        background: transparent;
+        color: $pad-color-1;
+    }
+
+    .danger {
+        font-style: normal;
+        background-color: $pad-color-danger;
+    }
+}

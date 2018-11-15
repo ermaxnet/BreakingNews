@@ -1,0 +1,20 @@
+﻿@model IEnumerable<MenuItemViewModel>
+
+<nav class="navigation" role="navigation">
+    <button class="navigation-button" aria-label="Navigation Menu" data-hamburger-button>
+        <span class="navigation-button__icon"></span>
+    </button>
+    <ul class="navigation-list">
+        @foreach (MenuItemViewModel item in Model)
+        {
+            <li class="navigation-list__item">
+                <a class="navigation-link @(item.IsHome ? "home" : "")"
+                   asp-controller="@item.ControllerName"
+                   asp-action="@item.ActionName"
+                   asp-all-route-data="@item.Parameters">
+                    <span class="text">@item.Name</span>
+                </a>
+            </li>
+        }
+    </ul>
+</nav>

@@ -1,0 +1,44 @@
+.Button {
+    display: inline-block;
+    min-width: $btn-min-width; height: $btn-height;
+    @extend %normalize;
+    padding: 0 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font: normal 400 14px/#{$btn-height} $btn-font;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    background-color: $btn-background;
+    color: $btn-color;
+    vertical-align: middle;
+    transition: all 250ms ease-in-out;
+
+    &__outlined {
+        border-radius: 2px;
+        background-color: transparent;
+        border: 1px solid $btn-outlined;
+        color: $btn-outlined;
+
+        &:hover {
+            background-color: $btn-outlined;
+            color: $btn-color;
+        }
+    }
+}
+
+.Button.Button__icon {
+    background-color: transparent;
+    min-width: auto;
+    width: $btn-height; height: $btn-height;
+    padding: 0;
+    text-align: center;
+    border-radius: 50%;
+
+    &:hover {
+        background-color: #fafafa;
+
+        .Icon {
+            color: $icon-color-1;
+        }
+    }
+}

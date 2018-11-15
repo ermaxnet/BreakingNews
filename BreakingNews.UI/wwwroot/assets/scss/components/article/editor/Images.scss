@@ -1,0 +1,183 @@
+@import "../../../theme";
+@import "../../../extends";
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+.Images {
+    position: relative;
+}
+
+.ImagePreview {
+    position: relative;
+    background-color: $img-background;
+    margin: 0;
+
+    & > .Image {
+        display: block;
+        max-width: 100%;
+        width: auto; height: auto;
+        cursor: default;
+        box-sizing: border-box;
+        margin: 0 auto;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+}
+
+.ImagesSlider {
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+
+    &__Slide {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        margin: 0;
+
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+        -ms-flex-align: center;
+        -ms-flex-pack: center;
+    }
+
+    .slick-arrow {
+        width: 82px; height: 100%;
+        z-index: 1000;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%; height: 100%;
+            top: 0; left: 0; right: 0;
+        }
+
+        &::before, &::after {
+            opacity: 0;
+            transition: opacity $transition-duration $transition-ease;
+        }
+
+        &.slick-prev {
+            left: 0;
+
+            &::after {
+                background-image: $slider-prev-mask;
+            }
+        }
+
+        &.slick-next {
+            right: 0;
+
+            &::after {
+                background-image: $slider-next-mask;
+            }
+        }
+    }
+
+    &:hover {
+        .slick-arrow {
+            &::before, &::after {
+                opacity: 1;
+            }
+        }
+    }
+
+    & &__SlideBullets {
+        position: absolute;
+        display: block;
+        left: 0; right: 0; 
+        bottom: 0;
+        margin: 0;
+        list-style: none;
+        padding: 19px 0;
+        text-align: center; white-space: nowrap;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 10000;
+
+        & > li {
+            display: inline-block;
+            width: 10px; height: 10px;
+            margin-right: 10px;
+            color: transparent;
+            vertical-align: middle;
+            pointer-events: auto;
+            overflow: hidden;
+            background-color: $slider-bullet-color;
+            box-shadow: $slider-bullet-shadow;
+            border-radius: 50%;
+
+            & > button {
+                display: block;
+                width: 10px; height: 10px;
+                opacity: 0; padding: 0;
+                font-size: 10px; cursor: pointer;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &.slick-active {
+                width: 18px; height: 18px;
+            }
+        }
+    }
+}
+
+.ImageCaption {
+    position: relative;
+    width: 100%;
+    margin: 15px 0 0;
+    text-align: center;
+    color: $img-caption-color;
+
+    & > .public-DraftStyleDefault-block {
+        text-align: center;
+    }
+}
+
+.ImagesSlider__Wrapper {
+    position: relative;
+    
+    & > .ImagesSlider__Button {
+        position: absolute;
+        min-width: initial;
+        background-color: transparent;
+        right: 0; top: 0;
+        padding-right: 0;
+    }
+}
+
+.ImagesSettings {
+    position: relative;
+    z-index: 200000;
+    outline: none!important;
+
+    &__Overlay {
+        position: fixed;
+        width: 100%; min-height: 100%;
+        background-color: $img-overlay;
+        top: 0; left: 0; right: 0;
+        overflow-y: auto;
+    }
+
+    &__Content {
+        position: absolute;
+        height: auto;
+        background-color: white;
+        outline: none!important;
+    }
+}
+
+.ImagesCards {
+    position: relative;
+    width: 100%; height: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ImagePreviewCard {
+    width: 250px;
+}
